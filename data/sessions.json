@@ -1,0 +1,35 @@
+[
+  {
+    "date": "2026-08-14",
+    "time": "5\u20136pm",
+    "spot": "Beachies",
+    "period": 18,
+    "swell": 214,
+    "wind_mph": null,
+    "wind_dir": null,
+    "tide": "8.5ft outgoing",
+    "note": "too long, a few, empty"
+  },
+  {
+    "date": "2026-08-15",
+    "time": "5\u20136pm",
+    "spot": "Beachies",
+    "period": 16,
+    "swell": 217,
+    "wind_mph": 28,
+    "wind_dir": 73,
+    "tide": "8.0ft outgoing",
+    "note": "closeouts, empty, glassy"
+  },
+  {
+    "date": "2026-08-16",
+    "time": "12\u20132pm",
+    "spot": "Astillero",
+    "period": 15,
+    "swell": 219,
+    "wind_mph": 25,
+    "wind_dir": 73,
+    "tide": "incoming",
+    "note": "fun, peaky, a bit cross"
+  }
+]

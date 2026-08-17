@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data" / "days"
+SESSIONS = ROOT / "data" / "sessions.json"
 
 SPOTS = (
     ("Beachies", 205),
@@ -180,6 +181,53 @@ def hour_block(hour: dict) -> str:
     )
 
 
+
+FACING = dict(SPOTS)
+
+
+def session_card(s: dict) -> str:
+    facing = FACING[s["spot"]]
+    period = f"{s['period']}s {period_bucket(s['period'])}"
+    swell_rel = signed_rel(s["swell"], facing)
+    swell = f"{fmt_rel(swell_rel)} {swell_bucket(swell_rel)}"
+    if s.get("wind_dir") is None:
+        wind = "—"
+    else:
+        wind_rel = signed_rel(s["wind_dir"], facing)
+        mph = s.get("wind_mph")
+        wind = f"{mph}mph model · {fmt_rel(wind_rel)} {wind_bucket(wind_rel)}"
+    day = title_for(s["date"])
+    return (
+        f'<div class="block">\n<h2>{day} · {s["time"]}</h2>\n'
+        f'<div class="row"><div><div class="spot">{s["spot"]}</div>'
+        f'<div class="kv">{period} · tide <b>{s["tide"]}</b></div></div>'
+        f'<div class="kv">swell <b>{swell}</b><br>wind <b>{wind}</b></div></div>\n'
+        f'<div class="note">{s["note"]}</div>\n</div>'
+    )
+
+
+def log_html(sessions: list[dict]) -> str:
+    cards = "\n".join(session_card(s) for s in reversed(sessions))
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Surf log</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="top">
+    <a class="brand" href="/">Popoyo</a>
+    <nav class="nav"><a href="/">Forecasts</a></nav>
+  </div>
+  <h1>Surf log</h1>
+  {cards}
+</body>
+</html>
+"""
+
+
 def nav_html(iso: str, dates: list[str]) -> str:
     i = dates.index(iso)
     prev_d = dates[i - 1] if i > 0 else None
@@ -210,8 +258,8 @@ def page_html(day: dict, dates: list[str]) -> str:
 </head>
 <body>
   <div class="top">
-    <div class="brand">Popoyo</div>
-    {nav_html(iso, dates)}
+    <a class="brand" href="/">Popoyo</a>
+    <div class="nav-wrap">{nav_html(iso, dates)}<nav class="nav"><a href="/log/">Log</a></nav></div>
   </div>
   <h1>{title}</h1>
   <p class="meta">{day["highs"]}</p>
@@ -246,7 +294,10 @@ def index_html(dates: list[str]) -> str:
   </script>
 </head>
 <body>
-  <div class="brand">Popoyo</div>
+  <div class="top">
+    <div class="brand">Popoyo</div>
+    <nav class="nav"><a href="/log/">Log</a></nav>
+  </div>
   <h1>Forecasts</h1>
   <ul>
 {links}
@@ -282,6 +333,14 @@ def main() -> None:
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(page_html(day, dates))
         print("wrote", out.relative_to(ROOT))
+
+    sessions_path = SESSIONS
+    if sessions_path.exists():
+        sessions = json.loads(sessions_path.read_text())
+        log_out = ROOT / "log" / "index.html"
+        log_out.parent.mkdir(parents=True, exist_ok=True)
+        log_out.write_text(log_html(sessions))
+        print("wrote", log_out.relative_to(ROOT))
 
     print("wrote days.json")
     print("wrote index.html")

@@ -6,23 +6,23 @@
   "extrema": [
     {
       "min": -34,
-      "ft": 0.5
+      "ft": 0.49
     },
     {
       "min": 342,
-      "ft": 8.5
+      "ft": 8.46
     },
     {
       "min": 718,
-      "ft": 0.8
+      "ft": 0.82
     },
     {
       "min": 1081,
-      "ft": 7.6
+      "ft": 7.58
     },
     {
       "min": 1448,
-      "ft": 0.9
+      "ft": 0.92
     }
   ],
   "hours": [
@@ -30,8 +30,8 @@
       "label": "9am",
       "min": 540,
       "period": 14,
-      "swell": 224,
-      "wind_mph": 14,
+      "swell": 211,
+      "wind_mph": 17,
       "wind_dir": 58,
       "tide": "outgoing"
     },
@@ -39,17 +39,17 @@
       "label": "noon",
       "min": 720,
       "period": 14,
-      "swell": 223,
-      "wind_mph": 18,
+      "swell": 212,
+      "wind_mph": 17,
       "wind_dir": 73,
       "tide": "0.8ft low"
     },
     {
       "label": "4pm",
       "min": 960,
-      "period": 13,
-      "swell": 223,
-      "wind_mph": 3,
+      "period": 14,
+      "swell": 215,
+      "wind_mph": 11,
       "wind_dir": 54,
       "tide": "incoming"
     }

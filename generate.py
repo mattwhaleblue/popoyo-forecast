@@ -157,6 +157,12 @@ def tide_graph(extrema: list[dict]) -> str:
         )
         parts.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="2.2" fill="#e8eef4"/>')
 
+    parts.append(
+        '<g id="tide-now-mark" hidden>'
+        '<line id="tide-now-line" x1="0" y1="18" x2="0" y2="122" stroke="#ffb86b" stroke-width="1.5"/>'
+        '<circle id="tide-now-dot" cx="0" cy="0" r="3.5" fill="#ffb86b"/>'
+        "</g>"
+    )
     parts.append("</svg>")
     return "\n".join(parts)
 
@@ -243,11 +249,35 @@ def nav_html(iso: str, dates: list[str]) -> str:
     return f'<nav class="nav">{prev}{nxt}</nav>'
 
 
+def graph_scale(extrema: list[dict]) -> tuple[float, float]:
+    extrema = sorted(extrema, key=lambda e: e["min"])
+    visible = [e for e in extrema if T_START <= e["min"] <= T_END]
+    src = visible or extrema
+    return min(e["ft"] for e in src), max(e["ft"] for e in src)
+
+
 def page_html(day: dict, dates: list[str]) -> str:
     iso = day["date"]
     title = title_for(iso)
     blocks = "\n".join(hour_block(h) for h in day["hours"])
     graph = tide_graph(day["extrema"])
+    h_min, h_max = graph_scale(day["extrema"])
+    tide_payload = json.dumps(
+        {
+            "date": iso,
+            "extrema": day["extrema"],
+            "h_min": h_min,
+            "h_max": h_max,
+            "t_start": T_START,
+            "t_end": T_END,
+            "x0": X0,
+            "x1": X1,
+            "y_top": Y_TOP,
+            "y_bot": Y_BOT,
+            "y_fill": Y_FILL,
+        },
+        separators=(",", ":"),
+    )
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -265,8 +295,11 @@ def page_html(day: dict, dates: list[str]) -> str:
   <p class="meta">{day["highs"]}</p>
   <p class="meta">{day["lows"]}</p>
   <p class="meta">{day["sun"]}</p>
+  <p class="now" id="tide-now" hidden></p>
   <div class="tide-wrap">{graph}</div>
   {blocks}
+  <script type="application/json" id="tide-data">{tide_payload}</script>
+  <script src="/tide-now.js"></script>
 </body>
 </html>
 """

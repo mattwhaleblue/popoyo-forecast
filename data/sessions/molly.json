@@ -1,0 +1,16 @@
+{
+  "name": "Molly",
+  "sessions": [
+    {
+      "date": "2026-08-17",
+      "time": "4:30\u20135:30pm",
+      "spot": "Beachies",
+      "period": 14,
+      "swell": 216,
+      "wind_mph": 8,
+      "wind_dir": 55,
+      "tide": "7.5ft high",
+      "note": "consistent fun waves, then windy and closing out; a few punchy ones before the stronger wind, rougher when she got out"
+    }
+  ]
+}

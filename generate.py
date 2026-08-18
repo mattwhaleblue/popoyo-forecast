@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data" / "days"
-SESSIONS = ROOT / "data" / "sessions.json"
+SESSIONS_DIR = ROOT / "data" / "sessions"
 
 SPOTS = (
     ("Beachies", 205),
@@ -212,14 +212,73 @@ def session_card(s: dict) -> str:
     )
 
 
-def log_html(sessions: list[dict]) -> str:
-    cards = "\n".join(session_card(s) for s in reversed(sessions))
+def slugify(name: str) -> str:
+    slug = "".join(ch.lower() if ch.isalnum() else "-" for ch in name).strip("-")
+    while "--" in slug:
+        slug = slug.replace("--", "-")
+    return slug or "log"
+
+
+def load_people() -> list[dict]:
+    people = []
+    if not SESSIONS_DIR.exists():
+        return people
+    for path in sorted(SESSIONS_DIR.glob("*.json")):
+        raw = json.loads(path.read_text())
+        if isinstance(raw, list):
+            name = path.stem.replace("-", " ").title()
+            sessions = raw
+        else:
+            name = raw.get("name") or path.stem.replace("-", " ").title()
+            sessions = raw.get("sessions") or []
+        people.append({"name": name, "slug": path.stem, "sessions": sessions})
+    people.sort(key=lambda p: p["name"].lower())
+    return people
+
+
+def person_log_html(person: dict) -> str:
+    cards = "\n".join(session_card(s) for s in reversed(person["sessions"]))
+    if not cards:
+        cards = '<p class="meta">No sessions yet.</p>'
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Surf log</title>
+  <title>{person["name"]} · surf log</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="top">
+    <a class="brand" href="/">Popoyo</a>
+    <div class="nav-wrap">
+      <nav class="nav"><a href="/log/">Logs</a></nav>
+      <nav class="nav"><a href="/">Forecasts</a></nav>
+    </div>
+  </div>
+  <h1>{person["name"]}</h1>
+  {cards}
+</body>
+</html>
+"""
+
+
+def logs_index_html(people: list[dict]) -> str:
+    items = []
+    for person in people:
+        n = len(person["sessions"])
+        label = "session" if n == 1 else "sessions"
+        items.append(
+            f'    <li><a href="/log/{person["slug"]}/">{person["name"]}</a>'
+            f'<span class="kv"> · {n} {label}</span></li>'
+        )
+    links = "\n".join(items) if items else "    <li class=\"kv\">No logs yet.</li>"
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Surf logs</title>
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
@@ -227,8 +286,10 @@ def log_html(sessions: list[dict]) -> str:
     <a class="brand" href="/">Popoyo</a>
     <nav class="nav"><a href="/">Forecasts</a></nav>
   </div>
-  <h1>Surf log</h1>
-  {cards}
+  <h1>Surf logs</h1>
+  <ul>
+{links}
+  </ul>
 </body>
 </html>
 """
@@ -367,13 +428,16 @@ def main() -> None:
         out.write_text(page_html(day, dates))
         print("wrote", out.relative_to(ROOT))
 
-    sessions_path = SESSIONS
-    if sessions_path.exists():
-        sessions = json.loads(sessions_path.read_text())
-        log_out = ROOT / "log" / "index.html"
-        log_out.parent.mkdir(parents=True, exist_ok=True)
-        log_out.write_text(log_html(sessions))
-        print("wrote", log_out.relative_to(ROOT))
+    people = load_people()
+    log_root = ROOT / "log"
+    log_root.mkdir(parents=True, exist_ok=True)
+    (log_root / "index.html").write_text(logs_index_html(people))
+    print("wrote", (log_root / "index.html").relative_to(ROOT))
+    for person in people:
+        out = log_root / person["slug"] / "index.html"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(person_log_html(person))
+        print("wrote", out.relative_to(ROOT))
 
     print("wrote days.json")
     print("wrote index.html")

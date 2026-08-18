@@ -1,0 +1,60 @@
+{
+  "name": "Matt",
+  "sessions": [
+    {
+      "date": "2026-08-14",
+      "time": "5\u20136pm",
+      "spot": "Beachies",
+      "period": 18,
+      "swell": 214,
+      "wind_mph": null,
+      "wind_dir": null,
+      "tide": "8.5ft outgoing",
+      "note": "too long, a few, empty"
+    },
+    {
+      "date": "2026-08-15",
+      "time": "5\u20136pm",
+      "spot": "Beachies",
+      "period": 16,
+      "swell": 217,
+      "wind_mph": 28,
+      "wind_dir": 73,
+      "tide": "8.0ft outgoing",
+      "note": "closeouts, empty, glassy"
+    },
+    {
+      "date": "2026-08-16",
+      "time": "12\u20132pm",
+      "spot": "Astillero",
+      "period": 15,
+      "swell": 219,
+      "wind_mph": 25,
+      "wind_dir": 73,
+      "tide": "incoming",
+      "note": "fun, peaky, a bit cross"
+    },
+    {
+      "date": "2026-08-17",
+      "time": "2\u20134pm",
+      "spot": "Chacocente",
+      "period": 14,
+      "swell": 217,
+      "wind_mph": 5,
+      "wind_dir": 45,
+      "tide": "4.2ft incoming",
+      "note": "excellent, medium, peaky, very clean"
+    },
+    {
+      "date": "2026-08-17",
+      "time": "4:30\u20135:30pm",
+      "spot": "Beachies",
+      "period": 14,
+      "swell": 216,
+      "wind_mph": 8,
+      "wind_dir": 55,
+      "tide": "7.5ft high",
+      "note": "very fun, a little straight, slightly more windy"
+    }
+  ]
+}

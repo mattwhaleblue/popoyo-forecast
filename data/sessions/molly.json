@@ -11,6 +11,17 @@
       "wind_dir": 55,
       "tide": "7.5ft high",
       "note": "consistent fun waves, then windy and closing out; a few punchy ones before the stronger wind, rougher when she got out"
+    },
+    {
+      "date": "2026-08-18",
+      "time": "5\u20135:40pm",
+      "spot": "Beachies",
+      "period": 14,
+      "swell": 217,
+      "wind_mph": 24,
+      "wind_dir": 80,
+      "tide": "6.3ft incoming",
+      "note": "smaller and more closeouts, a lot of wind, still fun"
     }
   ]
 }

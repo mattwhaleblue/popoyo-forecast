@@ -1,0 +1,16 @@
+{
+  "name": "Rob",
+  "sessions": [
+    {
+      "date": "2026-08-18",
+      "time": "3pm",
+      "spot": "Beachies",
+      "period": 14,
+      "swell": 217,
+      "wind_mph": 25,
+      "wind_dir": 75,
+      "tide": "3.0ft incoming",
+      "note": "loads of waves, just Rob, Joe, Gerry, Ronald, and Will for a while"
+    }
+  ]
+}

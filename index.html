@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/style.css" />
   <script>
     (function () {
-      var days = ["2026-08-15", "2026-08-16", "2026-08-17", "2026-08-18"];
+      var days = ["2026-08-15", "2026-08-16", "2026-08-17", "2026-08-18", "2026-08-19"];
       var today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Managua" });
       var target = days.indexOf(today) !== -1 ? today : days[days.length - 1];
       location.replace("/" + target + "/");
@@ -21,6 +21,7 @@
   </div>
   <h1>Forecasts</h1>
   <ul>
+    <li><a href="/2026-08-19/">Wednesday 19 Aug</a></li>
     <li><a href="/2026-08-18/">Tuesday 18 Aug</a></li>
     <li><a href="/2026-08-17/">Monday 17 Aug</a></li>
     <li><a href="/2026-08-16/">Sunday 16 Aug</a></li>

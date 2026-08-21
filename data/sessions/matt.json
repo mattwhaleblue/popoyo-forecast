@@ -54,7 +54,40 @@
       "wind_mph": 8,
       "wind_dir": 55,
       "tide": "7.5ft high",
-      "note": "very fun, a little straight, slightly more windy"
+      "note": "fun and small, a little straight, slightly more windy"
+    },
+    {
+      "date": "2026-08-18",
+      "time": "5\u20136pm",
+      "spot": "Beachies",
+      "period": 14,
+      "swell": 217,
+      "wind_mph": 24,
+      "wind_dir": 80,
+      "tide": "6.5ft incoming",
+      "note": "similar to Monday, a few more closeouts"
+    },
+    {
+      "date": "2026-08-19",
+      "time": "4:45\u20135:30pm",
+      "spot": "Beachies",
+      "period": 15,
+      "swell": 220,
+      "wind_mph": 20,
+      "wind_dir": 75,
+      "tide": "4.8ft incoming",
+      "note": "clean and fun, closeouts as the tide came up"
+    },
+    {
+      "date": "2026-08-20",
+      "time": "5:40\u20136:40pm",
+      "spot": "Beachies",
+      "period": 11,
+      "swell": 195,
+      "wind_mph": 23,
+      "wind_dir": 70,
+      "tide": "4.9ft incoming",
+      "note": "quite windy, lots of closeouts"
     }
   ]
 }

@@ -1,0 +1,42 @@
+{
+  "date": "2026-08-26",
+  "highs": "High 1:25am 6.4ft · 1:34pm 7.0ft",
+  "lows": "Low 7:24am 2.2ft · 7:55pm 1.6ft",
+  "sun": "Sunrise 5:32am · sunset 5:55pm",
+  "extrema": [
+    {"min": 85, "ft": 6.37},
+    {"min": 444, "ft": 2.23},
+    {"min": 814, "ft": 6.99},
+    {"min": 1195, "ft": 1.57},
+    {"min": 1567, "ft": 6.86}
+  ],
+  "hours": [
+    {
+      "label": "9am",
+      "min": 540,
+      "period": 15,
+      "swell": 215,
+      "wind_mph": 20,
+      "wind_dir": 60,
+      "tide": "incoming"
+    },
+    {
+      "label": "noon",
+      "min": 720,
+      "period": 15,
+      "swell": 215,
+      "wind_mph": 24,
+      "wind_dir": 80,
+      "tide": "incoming"
+    },
+    {
+      "label": "4pm",
+      "min": 960,
+      "period": 15,
+      "swell": 215,
+      "wind_mph": 24,
+      "wind_dir": 80,
+      "tide": "outgoing"
+    }
+  ]
+}

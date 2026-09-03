@@ -88,6 +88,17 @@
       "wind_dir": 70,
       "tide": "4.9ft incoming",
       "note": "quite windy, lots of closeouts"
+    },
+    {
+      "date": "2026-09-02",
+      "time": "5\u20136pm",
+      "spot": "Beachies",
+      "period": 11,
+      "swell": 220,
+      "wind_mph": 20,
+      "wind_dir": 80,
+      "tide": "7.0ft incoming",
+      "note": "3/5. It was a bit messy but fun caught lots of waves"
     }
   ]
 }

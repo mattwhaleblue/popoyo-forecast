@@ -3,7 +3,7 @@
   "sessions": [
     {
       "date": "2026-08-14",
-      "time": "5\u20136pm",
+      "time": "5–6pm",
       "spot": "Beachies",
       "period": 18,
       "swell": 214,
@@ -14,7 +14,7 @@
     },
     {
       "date": "2026-08-15",
-      "time": "5\u20136pm",
+      "time": "5–6pm",
       "spot": "Beachies",
       "period": 16,
       "swell": 217,
@@ -25,7 +25,7 @@
     },
     {
       "date": "2026-08-16",
-      "time": "12\u20132pm",
+      "time": "12–2pm",
       "spot": "Astillero",
       "period": 15,
       "swell": 219,
@@ -36,7 +36,7 @@
     },
     {
       "date": "2026-08-17",
-      "time": "2\u20134pm",
+      "time": "2–4pm",
       "spot": "Chacocente",
       "period": 14,
       "swell": 217,
@@ -47,7 +47,7 @@
     },
     {
       "date": "2026-08-17",
-      "time": "4:30\u20135:30pm",
+      "time": "4:30–5:30pm",
       "spot": "Beachies",
       "period": 14,
       "swell": 216,
@@ -58,7 +58,7 @@
     },
     {
       "date": "2026-08-18",
-      "time": "5\u20136pm",
+      "time": "5–6pm",
       "spot": "Beachies",
       "period": 14,
       "swell": 217,
@@ -69,7 +69,7 @@
     },
     {
       "date": "2026-08-19",
-      "time": "4:45\u20135:30pm",
+      "time": "4:45–5:30pm",
       "spot": "Beachies",
       "period": 15,
       "swell": 220,
@@ -80,7 +80,7 @@
     },
     {
       "date": "2026-08-20",
-      "time": "5:40\u20136:40pm",
+      "time": "5:40–6:40pm",
       "spot": "Beachies",
       "period": 11,
       "swell": 195,
@@ -91,7 +91,7 @@
     },
     {
       "date": "2026-09-02",
-      "time": "5\u20136pm",
+      "time": "5–6pm",
       "spot": "Beachies",
       "period": 11,
       "swell": 220,
@@ -99,6 +99,17 @@
       "wind_dir": 80,
       "tide": "7.0ft incoming",
       "note": "3/5. It was a bit messy but fun caught lots of waves"
+    },
+    {
+      "date": "2026-09-08",
+      "time": "2–3pm",
+      "spot": "Beachies",
+      "period": 13,
+      "swell": 220,
+      "wind_mph": 22,
+      "wind_dir": 90,
+      "tide": "5.3ft outgoing",
+      "note": "1/5. there was a storm"
     }
   ]
 }

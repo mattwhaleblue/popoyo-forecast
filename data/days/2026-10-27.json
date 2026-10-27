@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-27",
+  "highs": "High 2:50am 8.75ft \u00b7 3:20pm 7.81ft",
+  "lows": "Low 9:12am 0.13ft \u00b7 9:19pm 0.59ft",
+  "sun": "Sunrise 5:32am \u00b7 sunset 5:19pm",
+  "extrema": [
+    {"min": -560, "ft": 7.58},
+    {"min": -205, "ft": 0.82},
+    {"min": 170, "ft": 8.75},
+    {"min": 552, "ft": 0.13},
+    {"min": 920, "ft": 7.81},
+    {"min": 1279, "ft": 0.59},
+    {"min": 1653, "ft": 8.92},
+    {"min": 2036, "ft": -0.03},
+    {"min": 2404, "ft": 7.91},
+    {"min": 2765, "ft": 0.52}
+  ],
+  "hours": [
+    {"label": "9am", "min": 540, "period": 11, "swell": 240, "wind_mph": 10, "wind_dir": 70, "tide": "low"},
+    {"label": "noon", "min": 720, "period": 12, "swell": 240, "wind_mph": 9, "wind_dir": 70, "tide": "incoming"},
+    {"label": "4pm", "min": 960, "period": 12, "swell": 235, "wind_mph": 8, "wind_dir": 65, "tide": "high"}
+  ]
+}
